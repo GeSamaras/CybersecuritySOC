@@ -1,0 +1,11 @@
+- [ ] SIEM tools (https://wazuh.com/)
+- [ ] Endpoint Detection and Response (https://www.youtube.com/watch?v=SFFdbeogLFc)
+- [ ] IDS (https://www.ossec.net/)
+- [ ] Subnetting
+- [ ] IPS (snort/cisco/checkpoint)
+- [ ] Wireshark
+- [ ] Network Scanners (nmap)
+- [ ] ATT&CK
+- [ ] Registry
+- [ ] Scheduled Tasks
+- [ ] Networking Protocols
