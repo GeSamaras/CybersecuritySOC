@@ -9,3 +9,5 @@
 - [ ] Registry
 - [ ] Scheduled Tasks
 - [ ] Networking Protocols
+- [ ] OpenCTI
+
