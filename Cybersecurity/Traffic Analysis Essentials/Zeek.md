@@ -51,3 +51,87 @@
 | `grep -v -e 'test1' -e 'test2'`                  | Display lines that don't match one or both "test1" and "test2" strings.                          |
 | `file`                                           | View file information.                                                                           |
 | `grep -rin Testvalue1 * \| column -t \| less -S` | Search the "Testvalue1" string everywhere, organise column spaces and view the output with less. |
+
+**Zeek Signatures**  
+
+Zeek supports signatures to have rules and event correlations to find noteworthy activities on the network. Zeek signatures use low-level pattern matching and cover conditions similar to Snort rules. Unlike Snort rules, Zeek rules are not the primary event detection point. Zeek has a scripting language and can chain multiple events to find an event of interest. We focus on the signatures in this task, and then we will focus on Zeek scripting in the following tasks.  
+
+Zeek signatures are composed of three logical paths; signature id, conditions and action. The signature breakdown is shown in the table below
+
+|                  |                                                                                                                                                                                                                     |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Signature id** | **Unique** signature name.                                                                                                                                                                                          |
+| **Conditions**   | **Header:** Filtering the packet headers for specific source and destination addresses, protocol and port numbers.<br><br>**<br><br>**Content:** Filtering the packet payload for specific value/pattern.<br><br>** |
+| **Action**       | **Default action:** Create the "signatures.log" file in case of a signature match.<br><br>**Additional action:** Trigger a Zeek script.                                                                             |
+
+Now let's dig more into the Zeek signatures. The below table provides the most common conditions and filters for the Zeek signatures.
+
+|   |   |
+|---|---|
+|Condition Field|Available Filters|
+|Header|src-ip: Source IP.<br><br>dst-ip: Destination IP.<br><br>src-port: Source port.<br><br>dst-port: Destination port.<br><br>ip-proto: Target protocol. Supported protocols; TCP, UDP, ICMP, ICMP6, IP, IP6|
+|Content|**payload:** Packet payload.  <br>**http-request:** Decoded HTTP requests.  <br>**http-request-header:** Client-side HTTP headers.  <br>**http-request-body:** Client-side HTTP request bodys.  <br>**http-reply-header:** Server-side HTTP headers.  <br>**http-reply-body:** Server-side HTTP request bodys.  <br>**ftp:** Command line input of FTP sessions.|
+|**Context**|**same-ip:** Filtering the source and destination addresses for duplication.|
+|Action|**event:** Signature match message.|
+|**Comparison  <br>Operators**|**==**, **!=**, **<**, **<=**, **>**, **>=**|
+|**NOTE!**|Filters accept string, numeric and regex values.|
+
+
+Sample Signature
+
+```markdown
+signature http-password {
+     ip-proto == tcp
+     dst-port == 80
+     payload /.*password.*/
+     event "Cleartext Password Found!"
+}
+
+# signature: Signature name.
+# ip-proto: Filtering TCP connection.
+# dst-port: Filtering destination port 80.
+# payload: Filtering the "password" phrase.
+# event: Signature match message.
+```
+
+
+Zeek signatures support regex. Regex ".*" matches any character zero or more times. The rule will match when a "password" phrase is detected in the packet payload. Once the match occurs, Zeek will generate an alert and create additional log files (signatures.log and notice.log).  
+
+Signature Usage and Log Analysis
+
+```markdown
+ubuntu@ubuntu$ zeek -C -r http.pcap -s http-password.sig 
+ubuntu@ubuntu$ ls
+clear-logs.sh  conn.log  files.log  http-password.sig  http.log  http.pcap  notice.log  packet_filter.log  signatures.log
+
+ubuntu@ubuntu$ cat notice.log  | zeek-cut id.orig_h id.resp_h msg 
+10.10.57.178	44.228.249.3	10.10.57.178: Cleartext Password Found!
+10.10.57.178	44.228.249.3	10.10.57.178: Cleartext Password Found!
+
+ubuntu@ubuntu$ cat signatures.log | zeek-cut src_addr dest_addr sig_id event_msg 
+10.10.57.178		http-password	10.10.57.178: Cleartext Password Found!
+10.10.57.178		http-password	10.10.57.178: Cleartext Password Found!
+```
+
+
+Zeek Scripts  
+
+Zeek has its own event-driven scripting language, which is as powerful as high-level languages and allows us to investigate and correlate the detected events. Since it is as capable as high-level programming languages, you will need to spend time on Zeek scripting language in order to become proficient. In this room, we will cover the basics of Zeek scripting to help you understand, modify and create basic scripts. Note that scripts can be used to apply a policy and in this case, they are called policy scripts.
+
+
+Sample Script
+
+```markdown
+event dhcp_message (c: connection, is_orig: bool, msg: DHCP::Msg, options: DHCP::Options)
+{
+print options$host_name;
+}
+```
+
+extracting hostnames with tcpdump and tshark
+
+```markdown
+ubuntu@ubuntu$ zeek -C -r smallFlows.pcap dhcp-hostname.zeek 
+student01-PC
+vinlap01
+```
