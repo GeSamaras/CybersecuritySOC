@@ -67,3 +67,6 @@ Intrusion Detection System (IDS) is a system that detects unauthorised network a
 
 **==IPS==**
 Intrusion Prevention System (IPS) is a device or application that detects and stops intrusions attempts proactively. They are usually deployed in front of the protected asset and block any potential threat from reaching their target.
+
+**==PCAP==**
+Packet capture (PCAP) is a networking practice involving the interception of data packets travelling over a network. Once the packets are captured, they can be stored by IT teams for further analysis. The inspection of these packets allows IT teams to identify issues and solve network problems affecting daily operations.
