@@ -100,4 +100,74 @@ Filter toolbar features are shown below.
 
 
 
+**Nmap Scans  
 
+Nmap is an industry-standard tool for mapping networks, identifying live hosts and discovering the services. As it is one of the most used network scanner tools, a security analyst should identify the network patterns created with it. This section will cover identifying the most common Nmap scan types.
+
+- TCP connect scans
+- SYN scans
+- UDP scans
+
+It is essential to know how Nmap scans work to spot scan activity on the network. However, it is impossible to understand the scan details without using the correct filters. Below are the base filters to probe Nmap scan behaviour on the network.
+
+**TCP flags in a nutshell.**
+
+|   |   |
+|---|---|
+|**Notes**|**Wireshark Filters**|
+|Global search.|- `tcp`<br><br>- `udp`|
+|- Only SYN flag.<br>- SYN flag is set. The rest of the bits are not important.|- `tcp.flags == 2`<br><br>- `tcp.flags.syn == 1`|
+|- Only ACK flag.<br>- ACK flag is set. The rest of the bits are not important.|- `tcp.flags == 16`<br><br>- `tcp.flags.ack == 1`|
+|- Only SYN, ACK flags.<br>- SYN and ACK are set. The rest of the bits are not important.|- `tcp.flags == 18`<br><br>- `(tcp.flags.syn == 1) and (tcp.flags.ack == 1)`|
+|- Only RST flag.<br>- RST flag is set. The rest of the bits are not important.|- `tcp.flags == 4`<br><br>- `tcp.flags.reset == 1`|
+|- Only RST, ACK flags.<br>- RST and ACK are set. The rest of the bits are not important.|- `tcp.flags == 20`<br><br>- `(tcp.flags.reset == 1) and (tcp.flags.ack == 1)`|
+|- Only FIN flag<br>- FIN flag is set. The rest of the bits are not important.|- `tcp.flags == 1`<br><br>- `tcp.flags.fin == 1`|
+
+
+**TCP Connect Scan in a nutshell:**
+
+- Relies on the three-way handshake (needs to finish the handshake process).
+- Usually conducted with `nmap -sT` command.
+- Used by non-privileged users (only option for a non-root user).
+- Usually has a windows size larger than 1024 bytes as the request expects some data due to the nature of the protocol.
+
+|   |   |   |
+|---|---|---|
+|**Open TCP Port**|**Open TCP Port  <br>**|**Closed TCP Port**|
+|- SYN --><br>- <-- SYN, ACK<br>- ACK -->|- SYN --><br>- <-- SYN, ACK<br>- ACK --><br>- RST, ACK -->|- SYN --><br>- <-- RST, ACK|
+
+The images below show the three-way handshake process of the open and close TCP ports. Images and pcap samples are split to make the investigation easier and understand each case's details.
+
+**Open TCP port (Connect):**
+
+![Wireshark - tcp connect scan and open tcp port](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/500bb6902ef6b2edb515bb1828088d82.png)  
+
+**Closed TCP port (Connect):**
+
+![Wireshark - tcp connect scan and closed tcp port](https://tryhackme-images.s3.amazonaws.com/user-uploads/6131132af49360005df01ae3/room-content/c194773203502d659d72706aa93eae59.png)
+
+
+**ARP Poisoning/Spoofing (A.K.A. Man In The Middle Attack)  
+
+**ARP** protocol, or **A**ddress **R**esolution **P**rotocol (**ARP**), is the technology responsible for allowing devices to identify themselves on a network. Address Resolution Protocol Poisoning (also known as ARP Spoofing or Man In The Middle (MITM) attack) is a type of attack that involves network jamming/manipulating by sending malicious ARP packets to the default gateway. The ultimate aim is to manipulate the **"IP to MAC address table"** and sniff the traffic of the target host.
+
+There are a variety of tools available to conduct ARP attacks. However, the mindset of the attack is static, so it is easy to detect such an attack by knowing the ARP protocol workflow and Wireshark skills.    
+
+**ARP analysis in a nutshell:**
+
+- Works on the local network
+- Enables the communication between MAC addresses
+- Not a secure protocol
+- Not a routable protocol
+- It doesn't have an authentication function
+- Common patterns are request & response, announcement and gratuitous packets.
+
+Before investigating the traffic, let's review some legitimate and suspicious ARP packets. The legitimate requests are similar to the shown picture: a broadcast request that asks if any of the available hosts use an IP address and a reply from the host that uses the particular IP address.
+
+  
+
+|   |   |
+|---|---|
+|**Notes**|**Wireshark filter**|
+|Global search|- `arp`|
+|"ARP" options for grabbing the low-hanging fruits:<br><br>- Opcode 1: ARP requests.<br>- Opcode 2: ARP responses.<br>- **Hunt:** Arp scanning<br>- **Hunt:** Possible ARP poisoning detection<br>- **Hunt:** Possible ARP flooding from detection:|- `arp.opcode == 1`<br><br>- `arp.opcode == 2`<br><br>- `arp.dst.hw_mac==00:00:00:00:00:00`<br><br>- `arp.duplicate-address-detected or arp.duplicate-address-frame`<br><br>- `((arp) && (arp.opcode == 1)) && (arp.src.hw_mac == target-mac-address)`|
