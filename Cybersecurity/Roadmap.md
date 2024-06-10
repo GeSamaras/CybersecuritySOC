@@ -1,13 +1,21 @@
-- [ ] SIEM tools (https://wazuh.com/)
 - [ ] Endpoint Detection and Response (https://www.youtube.com/watch?v=SFFdbeogLFc)
 - [ ] IDS (https://www.ossec.net/)
-- [ ] Subnetting
+- [x] Subnetting
 - [ ] IPS (snort/cisco/checkpoint)
-- [ ] Wireshark
+- [x] Wireshark
 - [ ] Network Scanners (nmap)
-- [ ] ATT&CK
+- [x] ATT&CK
 - [ ] Registry
 - [ ] Scheduled Tasks
-- [ ] Networking Protocols
-- [ ] OpenCTI
-
+- [x] Networking Protocols
+- [x] OpenCTI
+- [x] Wazuh
+- [ ] Grafana
+- [ ] TheHive/Cortex
+- [ ] Shuffle
+- [ ] Velociraptor
+- [ ] InfluxDB
+- [ ] Ansible
+- [ ] Kali
+- [ ] HomeLab (https://www.youtube.com/watch?v=3-Nm15utD3g / )
+- [ ] Splunk
