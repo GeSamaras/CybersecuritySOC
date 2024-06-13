@@ -44,4 +44,21 @@ Data sources are grouped into categories. Below is a chart listing from the Spl
 
 
 
-#
+**Interesting log Sources**  
+
+Some of the interesting log sources that will help us in our Investigation are:  
+
+|   |   |
+|---|---|
+|**Log Sources**|**Details**|
+|**wineventlog**|It contains Windows Event logs|
+|**winRegistry**|It contains the logs related to registry creation / modification / deletion etc.|
+|**XmlWinEventLog**|It contains the sysmon event logs. It is a very important log source from an investigation point of view.|
+|**fortigate_utm  <br>**|It contains Fortinet Firewall logs|
+|**iis  <br>**|It contains IIS web server logs|
+|**Nessus:scan  <br>**|It contains the results from the Nessus vulnerability scanner.|
+|**Suricata  <br>**|It contains the details of the alerts from the Suricata IDS.   This log source shows which alert was triggered and what caused the alert to get triggered— a very important log source for the Investigation.|
+|**stream:http  <br>**|It contains the network flow related to http traffic.|
+|**stream: DNS  <br>**|It contains the network flow related to DNS traffic.|
+|**stream:icmp  <br>**|It contains the network flow related to icmp traffic.|
+**Note:** All the event logs that we are going to investigate are present in the `index=botsv1`
