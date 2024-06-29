@@ -173,3 +173,18 @@ In the next screen, an analyst can mark the email based on dropdown selections. 
 **Note**: I didn't perform further analysis on the domain name or the IP address. Neither did I perform any research regarding the root domain the email originated from. The attachment can further be analyzed by uploading it to a malware sandbox to see what exactly it's doing, which I did not do. Hence the reason why additional Flag artifacts and Classifications codes weren't selected for this malicious email. :) 
 
 To expand on classification codes briefly, not all phishing emails can be categorized as the same. A classification code allows us to tag a case with a specific code, such as Whaling (high-value target). Not all phishing emails will target a high-value target, such as a Chief Financial Officer (CFO).
+
+
+
+
+The tools covered in this room are just some that can help you with analyzing phishing emails. 
+
+As a defender, you'll come up with your own preferred tools and techniques to perform manual and automated analysis. 
+
+Here are a few other tools that we have not covered in detail within this room that deserve a shout:
+
+- [https://mxtoolbox.com/](https://mxtoolbox.com/)
+- [https://phishtank.com/?](https://phishtank.com/?)
+- [https://www.spamhaus.org/](https://www.spamhaus.org/)[](https://www.spamhaus.org/)
+
+That's all, folks! Happy Hunting!
