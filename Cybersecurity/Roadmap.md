@@ -19,3 +19,9 @@
 - [ ] Kali
 - [ ] HomeLab (https://www.youtube.com/watch?v=3-Nm15utD3g / )
 - [ ] Splunk
+- [ ] theHarvester (https://www.kali.org/tools/theharvester/)
+- [ ] Maltego (https://www.maltego.com/)
+- [ ] Metasploit (https://www.metasploit.com/)
+- [ ] Spiderfoot (https://www.kali.org/tools/spiderfoot/)
+- [ ] Pipl (https://pipl.com/)
+- [ ] Recon-ng (https://www.kali.org/tools/recon-ng/)
