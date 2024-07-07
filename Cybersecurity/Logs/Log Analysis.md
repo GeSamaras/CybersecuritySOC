@@ -185,3 +185,19 @@ path-traversal.log
 10.10.113.45 - - [2023-08-05 18:17:25] "GET /../../../../../etc/passwd HTTP/1.1" 200 505
 ```
 
+Automated Analysis
+
+Automated analysis involves the use of tools. For example, these often include commercial tools such as XPLG or SolarWinds Loggly. Automated analysis tools allow for processing and data analysis of logs. These tools often utilize Artificial Intelligence / Machine Learning to analyze patterns and trends. As the AI landscape evolves, we expect to see more effective automated analysis solutions.
+
+|   |   |
+|---|---|
+|**Advantages**|**Disadvantages**|
+|Saves time by performing a lot of the manual work required in manual analysis|Automated analysis tools are usually commercial-only and, therefore, expensive.|
+|The use of artificial intelligence is effective at recognizing patterns and trends.|The effectiveness of artificial intelligence depends on how capable the model is. For example, the risk of false positives increases, or newer or never-seen-before events can be missed as the AI is not trained to recognize these.|
+
+Manual Analysis
+
+Manual analysis is the process of examining data and artifacts without using automation tools. For example, an analyst scrolling through a web server log would be considered manual analysis. Manual analysis is essential for an analyst because automation tools cannot be relied upon.
+
+
+## **CLI Commands**
