@@ -5,6 +5,7 @@
 - [ ] DSA (programiz.com/dsa/stack, https://the-algorithms.com/)
 - [ ] IPS (snort/cisco/checkpoint)
 - [x] Wireshark
+- [ ] Google Dorks (youtube.com/watch?v=hrVa_dhD-iA, exploit-db.com/google-hacking-database)
 - [ ] Network Scanners (nmap)
 - [x] ATT&CK
 - [ ] Registry
