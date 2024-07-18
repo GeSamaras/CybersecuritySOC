@@ -1,6 +1,8 @@
 - [ ] Endpoint Detection and Response (https://www.youtube.com/watch?v=SFFdbeogLFc)
 - [ ] IDS (https://www.ossec.net/)
 - [x] Subnetting
+- [ ] Python (coursera.org/specializations/pythonforcybersecurity, learnpython.org/en/Functions)
+- [ ] DSA (programiz.com/dsa/stack, https://the-algorithms.com/)
 - [ ] IPS (snort/cisco/checkpoint)
 - [x] Wireshark
 - [ ] Network Scanners (nmap)
@@ -16,11 +18,11 @@
 - [ ] Velociraptor
 - [ ] InfluxDB
 - [ ] Ansible
-- [ ] Kali
+- [x] Kali
 - [ ] HomeLab (https://www.youtube.com/watch?v=3-Nm15utD3g / )
-- [ ] Splunk
+- [x] Splunk
 - [ ] theHarvester (https://www.kali.org/tools/theharvester/)
-- [ ] Maltego (https://www.maltego.com/)
+- [x] Maltego (https://www.maltego.com/)
 - [ ] Metasploit (https://www.metasploit.com/)
 - [ ] Spiderfoot (https://www.kali.org/tools/spiderfoot/)
 - [ ] Pipl (https://pipl.com/)
