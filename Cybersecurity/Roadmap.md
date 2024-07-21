@@ -8,8 +8,6 @@
 - [ ] Google Dorks (youtube.com/watch?v=hrVa_dhD-iA, exploit-db.com/google-hacking-database)
 - [ ] Network Scanners (nmap)
 - [x] ATT&CK
-- [ ] Registry
-- [ ] Scheduled Tasks
 - [x] Networking Protocols
 - [x] OpenCTI
 - [x] Wazuh
@@ -25,6 +23,6 @@
 - [ ] theHarvester (https://www.kali.org/tools/theharvester/)
 - [x] Maltego (https://www.maltego.com/)
 - [ ] Metasploit (https://www.metasploit.com/)
-- [ ] Spiderfoot (https://www.kali.org/tools/spiderfoot/)
+- [x] Spiderfoot (https://www.kali.org/tools/spiderfoot/)
 - [ ] Pipl (https://pipl.com/)
-- [ ] Recon-ng (https://www.kali.org/tools/recon-ng/)
+- [x] Recon-ng (https://www.kali.org/tools/recon-ng/)
