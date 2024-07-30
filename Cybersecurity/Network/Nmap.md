@@ -22,6 +22,8 @@ Useful nmap command explanation:
   - --script=vuln runs all pre-written scripts in the vuln category (shorthand is -sC)
   - -D to mask scans with decoys
   - --top-ports scans through the most popularly used ports
+  - -Pn to bypass firewall' ICMP block
+  - -f fragments packets to make it less likely to be detected
 - TCP Connect Scans (`-sT`)
 - SYN "Half-open" Scans (`-sS`)
 - UDP Scans (`-sU`)
@@ -101,3 +103,46 @@ In this regard, the two scans are identical: the big difference is in how they h
 ---
 
 [1] SYN scans can also be made to work by giving Nmap the CAP_NET_RAW, CAP_NET_ADMIN and CAP_NET_BIND_SERVICE capabilities; however, this may not allow many of the NSE scripts to run properly.
+
+# Scripting
+The **N**map **S**cripting **E**ngine (NSE) is an incredibly powerful addition to Nmap, extending its functionality quite considerably. NSE Scripts are written in the _Lua_ programming language, and can be used to do a variety of things: from scanning for vulnerabilities, to automating exploits for them. The NSE is particularly useful for reconnaisance, however, it is well worth bearing in mind how extensive the script library is.
+
+There are many categories available. Some useful categories include:
+
+- `safe`:- Won't affect the target
+- `intrusive`:- Not safe: likely to affect the target  
+    
+- `vuln`:- Scan for vulnerabilities
+- `exploit`:- Attempt to exploit a vulnerability
+- `auth`:- Attempt to bypass authentication for running services (e.g. Log into an FTP server anonymously)
+- `brute`:- Attempt to bruteforce credentials for running services
+- `discovery`:- Attempt to query running services for further information about the network (e.g. query an SNMP server).
+
+A more exhaustive list can be found [here](https://nmap.org/book/nse-usage.html).
+
+_Installing New Scripts_
+
+We mentioned previously that the Nmap website contains a list of scripts, so, what happens if one of these is missing in the `scripts` directory locally? A standard `sudo apt update && sudo apt install nmap` should fix this; however, it's also possible to install the scripts manually by downloading the script from Nmap (`sudo wget -O /usr/share/nmap/scripts/<script-name>.nse https://svn.nmap.org/nmap/scripts/<script-name>.nse`). This must then be followed up with `nmap --script-updatedb`, which updates the `script.db` file to contain the newly downloaded script.
+
+It's worth noting that you would require the same "updatedb" command if you were to make your own NSE script and add it into Nmap -- a more than manageable task with some basic knowledge of Lua!
+
+# Firewall Evasion
+
+We have already seen some techniques for bypassing firewalls (think stealth scans, along with NULL, FIN and Xmas scans); however, there is another very common firewall configuration which it's imperative we know how to bypass.
+
+Your typical Windows host will, with its default firewall, block all ICMP packets. This presents a problem: not only do we often use _ping_ to manually establish the activity of a target, Nmap does the same thing by default. This means that Nmap will register a host with this firewall configuration as dead and not bother scanning it at all.
+
+So, we need a way to get around this configuration. Fortunately Nmap provides an option for this: `-Pn`, which tells Nmap to not bother pinging the host before scanning it. This means that Nmap will always treat the target host(s) as being alive, effectively bypassing the ICMP block; however, it comes at the price of potentially taking a very long time to complete the scan (if the host really is dead then Nmap will still be checking and double checking every specified port).
+
+It's worth noting that if you're already directly on the local network, Nmap can also use ARP requests to determine host activity.
+
+---
+
+There are a variety of other switches which Nmap considers useful for firewall evasion. We will not go through these in detail, however, they can be found [here](https://nmap.org/book/man-bypass-firewalls-ids.html).
+
+The following switches are of particular note:
+
+- `-f`:- Used to fragment the packets (i.e. split them into smaller pieces) making it less likely that the packets will be detected by a firewall or IDS.
+- An alternative to `-f`, but providing more control over the size of the packets: `--mtu <number>`, accepts a maximum transmission unit size to use for the packets sent. This _must_ be a multiple of 8.
+- `--scan-delay <time>ms`:- used to add a delay between packets sent. This is very useful if the network is unstable, but also for evading any time-based firewall/IDS triggers which may be in place.
+- `--badsum`:- this is used to generate in invalid checksum for packets. Any real TCP/IP stack would drop this packet, however, firewalls may potentially respond automatically, without bothering to check the checksum of the packet. As such, this switch can be used to determine the presence of a firewall/IDS.
