@@ -34,3 +34,42 @@ After successfully installing the extension, you will notice a new tab appearing
 
 As this installation is simply an example of using the BApp store, we won't cover how to use the Request Timer here. However, I highly recommend switching to the new tab and exploring the extension to understand its functionalities better. The Request Timer can be valuable in various scenarios, especially when assessing web application security and identifying potential time-based vulnerabilities.
 
+# Jython
+
+To use Python modules in Burp Suite, we need to include the Jython Interpreter JAR file, which is a Java implementation of Python. The Jython Interpreter enables us to run Python-based extensions within Burp Suite.
+
+Follow these steps to integrate Jython into Burp Suite on your local machine:
+
+1. **Download Jython JAR**: Visit the [Jython website](https://www.jython.org/download) and download the standalone JAR archive. Look for the **Jython Standalone** option. Save the JAR file to a location on your disk.
+    
+    ![Jython Standalone download link](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/bdfe7373a7aa5fc356cdd95f0f7a2370.png)
+    
+2. **Configure Jython in Burp Suite**: Open Burp Suite and switch to the **Extensions** module. Then, go to the **Extensions settings** sub-tab.
+3. **Python Environment**: Scroll down to the "Python environment" section.
+4. **Set Jython JAR Location**: In the "Location of Jython standalone JAR file" field, set the path to the downloaded Jython JAR file.
+    
+    ![Setting the location of Jython Standalone](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/092c98a31ec4a28c39ef9e1446305762.png)
+    
+
+Once you have completed these steps, Jython will be integrated with Burp Suite, allowing you to use Python modules in the tool. This integration significantly increases the number of available extensions and enhances your capabilities in performing various security testing and web application assessment tasks.
+
+# Burp API
+
+In the Burp Suite Extensions module, you have access to a wide range of API endpoints that allow you to create and integrate your modules with Burp Suite. These APIs expose various functionalities, enabling you to extend the capabilities of Burp Suite to suit your specific needs.
+
+To view the available API endpoints, navigate to the **APIs** sub-tab within the Extensions module. Each item listed in the left-hand panel represents a different API endpoint that can be accessed from within extensions.
+
+![Burp Suite Extender APIs](https://tryhackme-images.s3.amazonaws.com/user-uploads/645b19f5d5848d004ab9c9e2/room-content/b815da3ba5714ffd2cbfa13c1c034aae.png)
+
+The Extensions APIs give developers significant power and flexibility when writing custom extensions. You can use these APIs to seamlessly interact with Burp Suite's existing functionality and tailor your extensions to perform specific tasks.
+
+Burp Suite supports multiple languages for writing extensions, such as:
+
+1. Java (Natively): You can directly use Java to write extensions for Burp Suite, taking advantage of the powerful APIs available.
+2. Python (via Jython): If you prefer Python as your programming language, you can utilize Jython, which is a Java implementation of Python to create Burp Suite extensions.
+3. Ruby (via JRuby): Developers familiar with Ruby can leverage JRuby, a Java implementation of Ruby, to build Burp Suite extensions.
+
+It's important to note that coding your extensions for Burp Suite can be a complex task, and it goes beyond the scope of this module. However, suppose you are interested in exploring this area further and creating custom extensions. In that case, PortSwigger provides a comprehensive reference that is an excellent resource for developing Burp Suite extensions.
+
+To learn more about Burp Suite extension development and to access the detailed reference, you can visit PortSwigger's official [documentation](https://portswigger.net/burp/extender/writing-your-first-burp-suite-extension). This resource will provide the information and guidance needed to create powerful and customized extensions that enhance your experience with Burp Suite.
+
