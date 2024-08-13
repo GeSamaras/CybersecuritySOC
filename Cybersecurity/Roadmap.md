@@ -1,28 +1,28 @@
-- [ ] Endpoint Detection and Response (https://www.youtube.com/watch?v=SFFdbeogLFc)
-- [ ] IDS (https://www.ossec.net/)
+- [x] Endpoint Detection and Response (https://www.youtube.com/watch?v=SFFdbeogLFc)
+- [x] IDS (https://www.ossec.net/)
 - [x] Subnetting
-- [ ] Python (coursera.org/specializations/pythonforcybersecurity, learnpython.org/en/Functions)
+- [x] Python (coursera.org/specializations/pythonforcybersecurity, learnpython.org/en/Functions)
 - [ ] DSA (programiz.com/dsa/stack, https://the-algorithms.com/)
-- [ ] IPS (snort/cisco/checkpoint)
+- [x] IPS (snort/cisco/checkpoint)
 - [x] Wireshark
-- [ ] Google Dorks (youtube.com/watch?v=hrVa_dhD-iA, exploit-db.com/google-hacking-database)
-- [ ] Network Scanners (nmap)
+- [x] Google Dorks (youtube.com/watch?v=hrVa_dhD-iA, exploit-db.com/google-hacking-database)
+- [x] Network Scanners (nmap)
 - [x] ATT&CK
 - [x] Networking Protocols
 - [x] OpenCTI
 - [x] Wazuh
 - [ ] Grafana
-- [ ] TheHive/Cortex
+- [x] TheHive/Cortex
 - [ ] Shuffle
-- [ ] Velociraptor
+- [x] Velociraptor
 - [ ] InfluxDB
-- [ ] Ansible
+- [x] Ansible
 - [x] Kali
 - [ ] HomeLab (https://www.youtube.com/watch?v=3-Nm15utD3g / )
 - [x] Splunk
-- [ ] theHarvester (https://www.kali.org/tools/theharvester/)
+- [x] theHarvester (https://www.kali.org/tools/theharvester/)
 - [x] Maltego (https://www.maltego.com/)
-- [ ] Metasploit (https://www.metasploit.com/)
+- [x] Metasploit (https://www.metasploit.com/)
 - [x] Spiderfoot (https://www.kali.org/tools/spiderfoot/)
 - [ ] Pipl (https://pipl.com/)
 - [x] Recon-ng (https://www.kali.org/tools/recon-ng/)
