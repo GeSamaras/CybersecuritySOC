@@ -1,3 +1,5 @@
+https://www.nextron-systems.com/wp-content/uploads/2022/04/Aurora_Agent_Overview_EN_2022_Mar.pdf
+
 https://www.nextron-systems.com/aurora/
 
 ![Aurora Icon](https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/9c0c806c4fe32fce3ba7f90a3f11d1b5.png)
