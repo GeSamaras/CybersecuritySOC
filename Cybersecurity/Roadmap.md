@@ -26,3 +26,9 @@
 - [x] Spiderfoot (https://www.kali.org/tools/spiderfoot/)
 - [ ] Pipl (https://pipl.com/)
 - [x] Recon-ng (https://www.kali.org/tools/recon-ng/)
+- [ ] Promox
+- [ ] Parsec
+- [ ] OPNsense/pfSense
+- [ ] Mini computers
+- [ ] Media Streaming
+- [ ] Screencasting/PiHole/Home Assistant
