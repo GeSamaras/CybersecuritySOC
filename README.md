@@ -1,2 +1,3 @@
-# THM-SOC1
-obsidian notes for soc level 1
+# SOC Study Notes
+
+Obsidian notes, lectures, sources and goals for cybersecurity
