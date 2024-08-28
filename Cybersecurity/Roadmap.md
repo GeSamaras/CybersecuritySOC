@@ -31,4 +31,6 @@
 - [ ] OPNsense/pfSense
 - [ ] Mini computers
 - [ ] Media Streaming
-- [ ] Screencasting/PiHole/Home Assistant
+- [ ] Screencasting/PiHole/Home Assistant (https://www.youtube.com/watch?v=SlImxtdCFSo)
+- [ ] TrueNAS
+- [ ] SQLMap
